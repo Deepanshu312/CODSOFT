@@ -7,28 +7,28 @@ and lowest grades */
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
+
+using namespace std;
 
 struct Student {
-    std::string name;
+    string name;
     double grade;
 };
 
 int main() {
-    std::vector<Student> students;
+    vector<Student> students;
     int numStudents;
 
-    std::cout << "Enter the number of students: ";
-    std::cin >> numStudents;
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
 
-    // Input student names and grades
+    // Input student names and their corrsponding grades.
     for (int i = 0; i < numStudents; ++i) {
         Student student;
-        std::cout << "Enter name of student " << i + 1 << ": ";
-        std::cin.ignore(); // Ignore newline character left in the input buffer
-        std::getline(std::cin, student.name);
-        std::cout << "Enter grade of student " << i + 1 << ": ";
-        std::cin >> student.grade;
+        cout << "Enter name of student " << i + 1 << ": "<<endl;
+        cin >> student.name;
+        cout << "Enter grade of student " << i + 1 << ": "<<endl;
+        cin >> student.grade;
         students.push_back(student);
     }
 
@@ -43,19 +43,19 @@ int main() {
     double highestGrade = students[0].grade;
     double lowestGrade = students[0].grade;
     for (const auto& student : students) {
-        highestGrade = std::max(highestGrade, student.grade);
-        lowestGrade = std::min(lowestGrade, student.grade);
+        highestGrade = max(highestGrade, student.grade);
+        lowestGrade = min(lowestGrade, student.grade);
     }
 
     // Display results
-    std::cout << "\nStudent Grades Summary:\n";
+    cout << "\nStudent Grades Summary:\n";
     for (const auto& student : students) {
-        std::cout << student.name << ": " << student.grade << std::endl;
+        cout << student.name << ": " << student.grade << endl;
     }
 
-    std::cout << "\nAverage Grade: " << averageGrade << std::endl;
-    std::cout << "Highest Grade: " << highestGrade << std::endl;
-    std::cout << "Lowest Grade: " << lowestGrade << std::endl;
+    cout << "\nAverage Grade: " << averageGrade << endl;
+    cout << "Highest Grade: " << highestGrade << endl;
+    cout << "Lowest Grade: " << lowestGrade << endl;
 
     return 0;
 }
